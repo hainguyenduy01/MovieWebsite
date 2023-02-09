@@ -27,14 +27,14 @@ const trending_right_btn = document.querySelector('.trending_right_btn');
 const navContainer = document.querySelector('.navContainer');
 const trending_container = document.querySelector('.trending_container');
 const title = document.querySelector('.title');
-
+// Menu
 menuulLI.forEach((item) => {
 	item.addEventListener('click', function () {
 		menuulLI.forEach((i) => i.classList.remove('hovered'));
 		item.classList.add('hovered');
 	});
 });
-
+// Theme tối
 lightDarkmode.addEventListener('click', function () {
 	document.body.classList.toggle('light');
 
@@ -44,7 +44,7 @@ lightDarkmode.addEventListener('click', function () {
 		localStorage.setItem(`theme`, `dark`);
 	}
 });
-
+// Set theme
 function settheme() {
 	let currtheme = localStorage.getItem('theme');
 
@@ -60,7 +60,7 @@ settheme();
 arrowLeft.addEventListener('click', function () {
 	document.body.classList.remove('minimize_siderbar');
 });
-
+// Button menu
 hamburger.addEventListener('click', function () {
 	document.body.classList.add('minimize_siderbar');
 });
@@ -70,9 +70,9 @@ overlaySideNavabar.addEventListener('click', function () {
 	overlaySideNavabar.classList.remove('sidenav_container_active');
 	document.body.classList.remove('minimize_siderbar');
 });
-
+// Key
 const myApi = '6b2dec73b6697866a50cdaef60ccffcb';
-
+// Lấy data từ api
 const NowPlaying = async () => {
 	const res = await fetch(
 		'https://api.themoviedb.org/3/movie/now_playing?api_key=680c99274ddab12ffac27271d9445d45&language=en-US&page=1',
@@ -108,9 +108,10 @@ const Toprated = async () => {
 	const Topratedmovies = data.results;
 	return Topratedmovies;
 };
-
+// Hàm load phim
 const NowPlayingfun = (movie) => {
 	let url = './movieDetail.html?id=' + encodeURIComponent(movie.id);
+	// Load danh mục phụ
 	return `<div class="Now_playing_movies" >
     <a class="posterlink" href=${url}> <img class="poster" data-id="${
 		movie.id
@@ -140,21 +141,21 @@ const currpopularfun = (movie) => {
 	}" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" 
   onerror="this.onerror=null;this.src='./resources/D moviesand tv show.png';"
   loading="lazy" alt="${movie.title}"></a>
-         <p class="movie_title">${movie.title}</p>
-         <div class="date_rating">
-             <p class="date">${dateFormatter(
+          <p class="movie_title">${movie.title}</p>
+          <div class="date_rating">
+              <p class="date">${dateFormatter(
 								movie.release_date,
 							)}</p><span class="dot dot2"></span>
-             <p class="rating">${
+              <p class="rating">${
 								movie.vote_average
 							}<span><svg xmlns="http://www.w3.org/2000/svg" width="10"
-                         height="10" fill="Yellow" class="star bi-star-fill" viewBox="0 0 16 16">
-                         <path
-                             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                     </svg></span></p>
-             <div class="category">Movie</div>
-             </div>
-         </div>`;
+                          height="10" fill="Yellow" class="star bi-star-fill" viewBox="0 0 16 16">
+                          <path
+                              d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                    </svg></span></p>
+            <div class="category">Movie</div>
+            </div>
+        </div>`;
 };
 const topratedmoviesfun = (movie) => {
 	let url = './movieDetail.html?id=' + encodeURIComponent(movie.id);
@@ -164,23 +165,23 @@ const topratedmoviesfun = (movie) => {
 	}" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" 
   onerror="this.onerror=null;this.src='./resources/D moviesand tv show.png';"
   loading="lazy" alt="${movie.title}"></a>
-         <p class="movie_title">${movie.title}</p>
-         <div class="date_rating">
-             <p class="date">${dateFormatter(
-								movie.release_date,
-							)}</p><span class="dot dot2"></span>
-             <p class="rating">${
-								movie.vote_average
-							}<span><svg xmlns="http://www.w3.org/2000/svg" width="10"
-                         height="10" fill="Yellow" class="star bi-star-fill" viewBox="0 0 16 16">
-                         <path
-                             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                     </svg></span></p>
-             <div class="category">Movie</div>
-             </div>
-         </div>`;
+        <p class="movie_title">${movie.title}</p>
+      <div class="date_rating">
+            <p class="date">${dateFormatter(
+							movie.release_date,
+						)}</p><span class="dot dot2"></span>
+            <p class="rating">${
+							movie.vote_average
+						}<span><svg xmlns="http://www.w3.org/2000/svg" width="10"
+                        height="10" fill="Yellow" class="star bi-star-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                    </svg></span></p>
+            <div class="category">Movie</div>
+            </div>
+          </div>`;
 };
-
+// Poster trang chủ
 const trendinghtml = function (data) {
 	let url = './movieDetail.html?id=' + encodeURIComponent(data.id);
 	let url2 = '';
@@ -191,8 +192,7 @@ const trendinghtml = function (data) {
 		}"  data-id="${data.id}">
         <img class="trending_poster"
             src="https://image.tmdb.org/t/p/original//${data.backdrop_path}"
-            alt="${data.title}">
-           
+            alt="${data.title}">  
             <div class="trending_child_2"> </div>
         <div class="trending_details">
             <h1 class="Trending_heading">Phim <span class="Trending_categ">${
@@ -209,13 +209,13 @@ const trendinghtml = function (data) {
 </div>`;
 };
 
-// Hàm lấy n
+// Hàm lấy năm
 const dateFormatter = function (date) {
 	let currdate = date;
 	const newDate = currdate.slice(0, 4);
 	return newDate;
 };
-
+// Thực thi hàm chuyển hướng trang khi click vào phim
 NowPlaying().then((movies) => {
 	movies.forEach((moviee) => {
 		const htmll = NowPlayingfun(moviee);
@@ -375,10 +375,7 @@ window.onload = function () {
 		menuulLI[0].classList.add('hovered');
 	}
 };
-
+// Ô tìm kiếm
 searchbox.addEventListener('click', function () {
 	location.replace('./search.html');
-});
-title.addEventListener('click', function () {
-	location.replace('./index.html');
 });

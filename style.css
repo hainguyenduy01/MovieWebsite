@@ -2910,3 +2910,6 @@ body.light .paginationBtn {
 	width: 55px;
 	height: 55px;
 }
+.sidenav h3:hover {
+	cursor: pointer;
+}
